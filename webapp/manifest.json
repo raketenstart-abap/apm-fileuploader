@@ -135,15 +135,6 @@
               }
             }
           }
-        },
-        "pages": {
-          "ObjectPage|ZMD_C_UPLOAD_TP_D": {
-            "entitySet": "ZMD_C_UPLOAD_TP_D",
-            "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
-            "component": {
-              "name": "sap.suite.ui.generic.template.ObjectPage"
-            }
-          }
         }
       }
     }
