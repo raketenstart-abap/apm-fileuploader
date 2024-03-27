@@ -9,16 +9,15 @@
     "sapui5"
   ],
   "main": "webapp/index.html",
-  "dependencies": {},
   "devDependencies": {
-    "@ui5/cli": "^3.0.0",
-    "@sap/ux-ui5-tooling": "1",
-    "@sap/ux-specification": "UI5-1.71",
-    "@sap-ux/eslint-plugin-fiori-tools": "^0.2.0",
-    "eslint": "7.32.0",
-    "eslint-plugin-fiori-custom": "2.6.7",
     "@babel/eslint-parser": "7.14.7",
-    "@sap-ux/ui5-middleware-fe-mockserver": "2"
+    "@sap-ux/eslint-plugin-fiori-tools": "^0.2.0",
+    "@sap-ux/ui5-middleware-fe-mockserver": "2",
+    "@sap/ux-specification": "UI5-1.71",
+    "@sap/ux-ui5-tooling": "1",
+    "@ui5/cli": "^3.9.2",
+    "eslint": "7.32.0",
+    "eslint-plugin-fiori-custom": "2.6.7"
   },
   "scripts": {
     "start": "fiori run --open \"test/flpSandbox.html?sap-client=001&sap-ui-xx-viewCache=false#apmfileuploader-tile\"",

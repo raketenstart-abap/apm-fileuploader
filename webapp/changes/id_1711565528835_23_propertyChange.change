@@ -1,0 +1,41 @@
+{
+    "fileName": "id_1711565528835_23_propertyChange",
+    "fileType": "change",
+    "changeType": "propertyChange",
+    "moduleName": "",
+    "reference": "apm.fileuploader",
+    "packageName": "",
+    "content": {
+        "property": "hAlign",
+        "newValue": "End"
+    },
+    "selector": {
+        "id": "apm.fileuploader::sap.suite.ui.generic.template.ListReport.view.ListReport::ZMD_C_UPLOAD_TP_D--listReport-Status",
+        "idIsLocal": false,
+        "type": "sap.m.Column"
+    },
+    "layer": "CUSTOMER_BASE",
+    "texts": {},
+    "namespace": "apps/apm.fileuploader/changes/",
+    "projectId": "",
+    "creation": 1711565528835,
+    "originalLanguage": "",
+    "support": {
+        "generator": "changeUtils: SAPFioriTools",
+        "service": "",
+        "user": "",
+        "sapui5Version": "1.71.50",
+        "sourceChangeFileName": "",
+        "compositeCommand": ""
+    },
+    "oDataInformation": {},
+    "dependentSelector": {},
+    "validAppVersions": {
+        "from": "0.0.1",
+        "to": "0.0.1",
+        "creation": "0.0.1"
+    },
+    "jsOnly": false,
+    "variantReference": "",
+    "appDescriptorChange": false
+}
