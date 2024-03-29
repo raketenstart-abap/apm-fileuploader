@@ -18,9 +18,10 @@
                 <Key>
                     <PropertyRef Name="FileUUID"/>
                 </Key>
+                <Property Name="Trigger_upload_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="FileUUID" Type="Edm.Guid" Nullable="false" sap:label="Node Key" sap:quickinfo="EPM: Generic Node Key" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="FileName" Type="Edm.String" sap:label="File name"/>
-                <Property Name="FileDescription" Type="Edm.String" sap:label="File description"/>
+                <Property Name="FileName" Type="Edm.String" MaxLength="255" sap:text="FileDescription" sap:label="File name"/>
+                <Property Name="FileDescription" Type="Edm.String" MaxLength="255" sap:label="File description"/>
                 <Property Name="FileType" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="File type"/>
                 <Property Name="FileSize" Type="Edm.Int32" sap:label="File size"/>
                 <Property Name="Status" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="to_Status/ValueText" sap:label="File processing status" sap:creatable="false" sap:updatable="false" sap:value-list="fixed-values"/>
@@ -31,6 +32,9 @@
                 <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by" sap:creatable="false" sap:updatable="false"/>
                 <NavigationProperty Name="to_Status" Relationship="ZMD_C_UPLOAD_TP_D_CDS.assoc_F62429C2C5EF7D5A9EC4EFB217EEB0FA" FromRole="FromRole_assoc_F62429C2C5EF7D5A9EC4EFB217EEB0FA" ToRole="ToRole_assoc_F62429C2C5EF7D5A9EC4EFB217EEB0FA"/>
             </EntityType>
+            <ComplexType Name="DummyFunctionImportResult">
+                <Property Name="IsInvalid" Type="Edm.Boolean" sap:label="TRUE"/>
+            </ComplexType>
             <Association Name="assoc_F62429C2C5EF7D5A9EC4EFB217EEB0FA" sap:content-version="1">
                 <End Type="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType" Multiplicity="1" Role="FromRole_assoc_F62429C2C5EF7D5A9EC4EFB217EEB0FA"/>
                 <End Type="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_STATUS_VHType" Multiplicity="0..1" Role="ToRole_assoc_F62429C2C5EF7D5A9EC4EFB217EEB0FA"/>
@@ -50,6 +54,9 @@
                     <End EntitySet="ZMD_C_UPLOAD_TP_D" Role="FromRole_assoc_F62429C2C5EF7D5A9EC4EFB217EEB0FA"/>
                     <End EntitySet="ZMD_C_UPLOAD_STATUS_VH" Role="ToRole_assoc_F62429C2C5EF7D5A9EC4EFB217EEB0FA"/>
                 </AssociationSet>
+                <FunctionImport Name="ZMD_C_UPLOAD_TP_DTrigger_upload" ReturnType="ZMD_C_UPLOAD_TP_D_CDS.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType" sap:applicable-path="Trigger_upload_ac">
+                    <Parameter Name="FileUUID" Type="Edm.Guid" Mode="In"/>
+                </FunctionImport>
             </EntityContainer>
             <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType/FileName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>

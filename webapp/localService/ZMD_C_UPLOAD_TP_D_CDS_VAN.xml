@@ -45,9 +45,22 @@
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType/FileDescription">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType/StatusCriticality">
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
                 <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType/Trigger_upload_ac">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType/Status">
+                <Annotation Term="Common.Text" Path="to_Status/ValueText">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
             </Annotations>
             <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType">
                 <Annotation Term="UI.HeaderInfo">
@@ -66,15 +79,23 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
-                <Annotation Term="UI.LineItem">
+                <Annotation Term="UI.Identification">
                     <Collection>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="FileName"/>
-                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Trigger load"/>
+                            <PropertyValue Property="Action" String="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_D_CDS_Entities/ZMD_C_UPLOAD_TP_DTrigger_upload"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="FileDescription"/>
-                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium"/>
+                            <PropertyValue Property="Value" Path="FileName"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="FileType"/>
@@ -83,6 +104,13 @@
                             <PropertyValue Property="Value" Path="FileSize"/>
                         </Record>
                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CreatedAt"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CreatedBy"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Criticality" Path="StatusCriticality"/>
                             <PropertyValue Property="Value" Path="Status"/>
                         </Record>
                     </Collection>
@@ -102,9 +130,9 @@
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
                         <PropertyPath>FileName</PropertyPath>
-                        <PropertyPath>FileDescription</PropertyPath>
                         <PropertyPath>FileType</PropertyPath>
-                        <PropertyPath>FileSize</PropertyPath>
+                        <PropertyPath>CreatedAt</PropertyPath>
+                        <PropertyPath>CreatedBy</PropertyPath>
                         <PropertyPath>Status</PropertyPath>
                     </Collection>
                 </Annotation>
