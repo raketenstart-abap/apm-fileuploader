@@ -1,0 +1,78 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified"
+    xmlns="sap.m"
+>
+    <Dialog
+        id="uploadFileDialog"
+        title="{i18n>upload_dialog_title}"
+        class="sapUiResponsiveContentPadding"
+        beforeOpen=".onBeforeOpen"
+        afterClose=".onAfterClose"
+    >
+        <content>
+            <l:VerticalLayout
+                id="uploadFileDialog_layout"
+                width="100%"
+                class="sapUiContentPadding"
+            >
+                <!-- file type -->
+                <Label
+                    id="uploadFileDialog_filetype_label"
+                    text="{i18n>upload_dialog_filetype_label}"
+                    labelFor="uploadFileDialog_filetype"
+                />
+                <Select
+                    id="uploadFileDialog_filetype"
+                    forceSelection="true"
+                    items="{
+                        path: '/ZMD_C_UPLOAD_FILECATEGORY_VH'
+                    }"
+                    width="100%"
+                >
+                    <core:Item
+                        id="uploadFileDialog_filetype_item"
+                        key="{ID}"
+                        text="{Text}"
+                    />
+                </Select>
+
+                <!-- uploader -->
+                <Label
+                    id="uploadFileDialog_uploader_label"
+                    text="{i18n>upload_dialog_uploader_label}"
+                    labelFor="uploadFileDialog_filetype"
+                />
+                <u:FileUploader
+                    id="uploadFileDialog_uploader"
+                    fileType="csv"
+                    multiple="false"
+                    uploadUrl="/api/admin/Upload/csv"
+                    fileAllowed=".onFileAllowed"
+                    uploadComplete=".onUploadComplete"
+                    typeMissmatch=".onTypeMismatch"
+                    sendXHR="true"
+                    useMultipart="false"
+                    placeholder="{i18n>upload_dialog_uploader_placeholder}"
+                />
+            </l:VerticalLayout>
+        </content>
+        <beginButton>
+            <Button
+                id="import"
+                text="{i18n>upload_dialog_button_import}"
+                press=".onImport"
+                type="Emphasized"
+                enabled="false"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                id="cancel"
+                text="{i18n>upload_dialog_button_cancel}"
+                press=".onCancel"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

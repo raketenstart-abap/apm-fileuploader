@@ -5,7 +5,14 @@
     </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
         <Schema Namespace="ZMD_C_UPLOAD_TP_D_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-            <EntityType Name="ZMD_C_UPLOAD_STATUS_VHType" sap:label="Master Data Upload Status Consumption" sap:content-version="1">
+            <EntityType Name="ZMD_C_UPLOAD_FILECATEGORY_VHType" sap:label="File Category" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Status" sap:quickinfo="Values for Domains: Single Value / Upper Limit"/>
+                <Property Name="Text" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="ZMD_C_UPLOAD_STATUS_VHType" sap:label="Status" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="ID"/>
                 </Key>
@@ -20,8 +27,9 @@
                 </Key>
                 <Property Name="Trigger_upload_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="FileUUID" Type="Edm.Guid" Nullable="false" sap:label="Node Key" sap:quickinfo="EPM: Generic Node Key" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="FileName" Type="Edm.String" MaxLength="255" sap:text="FileDescription" sap:label="File name"/>
-                <Property Name="FileDescription" Type="Edm.String" MaxLength="255" sap:label="File description"/>
+                <Property Name="FileName" Type="Edm.String" MaxLength="255" sap:text="FileName_Text" sap:label="File name"/>
+                <Property Name="FileName_Text" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FileCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="File category" sap:creatable="false" sap:updatable="false" sap:value-list="fixed-values"/>
                 <Property Name="FileType" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="File type"/>
                 <Property Name="FileSize" Type="Edm.Int32" sap:label="File size"/>
                 <Property Name="Status" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="to_Status/ValueText" sap:label="File processing status" sap:creatable="false" sap:updatable="false" sap:value-list="fixed-values"/>
@@ -30,6 +38,7 @@
                 <Property Name="ChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed by" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="CreatedAt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:filter-restriction="multi-value" sap:label="Created at" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_Category" Relationship="ZMD_C_UPLOAD_TP_D_CDS.assoc_0B8FC1A65548A970377588F4B8BBE0AF" FromRole="FromRole_assoc_0B8FC1A65548A970377588F4B8BBE0AF" ToRole="ToRole_assoc_0B8FC1A65548A970377588F4B8BBE0AF"/>
                 <NavigationProperty Name="to_Status" Relationship="ZMD_C_UPLOAD_TP_D_CDS.assoc_F62429C2C5EF7D5A9EC4EFB217EEB0FA" FromRole="FromRole_assoc_F62429C2C5EF7D5A9EC4EFB217EEB0FA" ToRole="ToRole_assoc_F62429C2C5EF7D5A9EC4EFB217EEB0FA"/>
             </EntityType>
             <ComplexType Name="DummyFunctionImportResult">
@@ -47,9 +56,26 @@
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
+            <Association Name="assoc_0B8FC1A65548A970377588F4B8BBE0AF" sap:content-version="1">
+                <End Type="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType" Multiplicity="1" Role="FromRole_assoc_0B8FC1A65548A970377588F4B8BBE0AF"/>
+                <End Type="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_FILECATEGORY_VHType" Multiplicity="0..1" Role="ToRole_assoc_0B8FC1A65548A970377588F4B8BBE0AF"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_0B8FC1A65548A970377588F4B8BBE0AF">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_0B8FC1A65548A970377588F4B8BBE0AF">
+                        <PropertyRef Name="FileCategory"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
             <EntityContainer Name="ZMD_C_UPLOAD_TP_D_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZMD_C_UPLOAD_FILECATEGORY_VH" EntityType="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_FILECATEGORY_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="ZMD_C_UPLOAD_STATUS_VH" EntityType="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_STATUS_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="ZMD_C_UPLOAD_TP_D" EntityType="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_0B8FC1A65548A970377588F4B8BBE0AF" Association="ZMD_C_UPLOAD_TP_D_CDS.assoc_0B8FC1A65548A970377588F4B8BBE0AF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZMD_C_UPLOAD_TP_D" Role="FromRole_assoc_0B8FC1A65548A970377588F4B8BBE0AF"/>
+                    <End EntitySet="ZMD_C_UPLOAD_FILECATEGORY_VH" Role="ToRole_assoc_0B8FC1A65548A970377588F4B8BBE0AF"/>
+                </AssociationSet>
                 <AssociationSet Name="assoc_F62429C2C5EF7D5A9EC4EFB217EEB0FA" Association="ZMD_C_UPLOAD_TP_D_CDS.assoc_F62429C2C5EF7D5A9EC4EFB217EEB0FA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="ZMD_C_UPLOAD_TP_D" Role="FromRole_assoc_F62429C2C5EF7D5A9EC4EFB217EEB0FA"/>
                     <End EntitySet="ZMD_C_UPLOAD_STATUS_VH" Role="ToRole_assoc_F62429C2C5EF7D5A9EC4EFB217EEB0FA"/>
@@ -61,10 +87,30 @@
             <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType/FileName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
             </Annotations>
+            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType/FileCategory" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="File Category"/>
+                        <PropertyValue Property="CollectionPath" String="ZMD_C_UPLOAD_FILECATEGORY_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="FileCategory"/>
+                                    <PropertyValue Property="ValueListProperty" String="ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType/Status" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
-                        <PropertyValue Property="Label" String="Master Data Upload Status Consumption"/>
+                        <PropertyValue Property="Label" String="Status"/>
                         <PropertyValue Property="CollectionPath" String="ZMD_C_UPLOAD_STATUS_VH"/>
                         <PropertyValue Property="SearchSupported" Bool="true"/>
                         <PropertyValue Property="Parameters">

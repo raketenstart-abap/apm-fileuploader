@@ -121,7 +121,7 @@
                                 "Actions": {
                                     "idUpload": {
                                         "id": "idUploadButton",
-                                        "text": "{@i18n>uploadFile}",
+                                        "text": "{@i18n>upload_file}",
                                         "press": "upload",
                                         "requiresSelection": false,
                                         "logicalAction": "Create"

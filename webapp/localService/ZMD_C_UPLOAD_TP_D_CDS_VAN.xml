@@ -14,6 +14,48 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema Namespace="zmd_c_upload_tp_d_cds_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_FILECATEGORY_VHType/ID">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_FILECATEGORY_VHType">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="File category"/>
+                        <PropertyValue Property="TypeNamePlural" String="File categories"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" String="">
+                                    <Annotation Term="Core.Messages">
+                                        <Collection>
+                                            <Record>
+                                                <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-001"/>
+                                                <PropertyValue Property="message" String="Property 'FixedValue' of annotation 'UI.HEADERINFO.TITLE' in proj./view 'ZMD_C_UPLOAD_FILECATEGORY_VH' not found"/>
+                                                <PropertyValue Property="severity" String="error"/>
+                                            </Record>
+                                        </Collection>
+                                    </Annotation>
+                                </PropertyValue>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" String="">
+                                    <Annotation Term="Core.Messages">
+                                        <Collection>
+                                            <Record>
+                                                <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-001"/>
+                                                <PropertyValue Property="message" String="Property 'ValueText' of annotation 'UI.HEADERINFO.DESCRIPTION' in proj./view 'ZMD_C_UPLOAD_FILECATEGORY_VH' not found"/>
+                                                <PropertyValue Property="severity" String="error"/>
+                                            </Record>
+                                        </Collection>
+                                    </Annotation>
+                                </PropertyValue>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_STATUS_VHType/ID">
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
                 <Annotation Term="UI.Hidden"/>
@@ -45,7 +87,7 @@
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType/FileDescription">
+            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType/FileCategory">
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -74,7 +116,7 @@
                         </PropertyValue>
                         <PropertyValue Property="Description">
                             <Record Type="UI.DataField">
-                                <PropertyValue Property="Value" Path="FileDescription"/>
+                                <PropertyValue Property="Value" Path="FileCategory"/>
                             </Record>
                         </PropertyValue>
                     </Record>
