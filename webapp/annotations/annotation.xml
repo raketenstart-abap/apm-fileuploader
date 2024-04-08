@@ -20,12 +20,11 @@
                             <PropertyValue Property="Value" Path="FileName"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium"/>
                         </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="FileType"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="FileSize"/>
-                        </Record>
+                        <!-- <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Value" Path="FileName"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                            <PropertyValue Property="Url" Path="to_FileUploaderData/FileURI"/>
+                        </Record> -->
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="CreatedAt"/>
                         </Record>
@@ -33,11 +32,11 @@
                             <PropertyValue Property="Value" Path="CreatedBy"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Criticality" Path="StatusCriticality"/>
+                            <PropertyValue Property="Criticality" Path="to_Status/Criticality"/>
                             <PropertyValue Property="Value" Path="Status"/>
                         </Record>
-                        <Record Type="UI.DataFieldForAction" >
-                            <PropertyValue Property="Label" String="Trigger upload" />
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="{@i18n>trigger_load}"/>
                             <PropertyValue Property="Action" String="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_D_CDS_Entities/ZMD_C_UPLOAD_TP_DTrigger_upload"/>
                             <PropertyValue Property="Inline" Bool="true"/>
                             <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>

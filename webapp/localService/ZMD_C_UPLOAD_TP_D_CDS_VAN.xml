@@ -18,6 +18,14 @@
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_FILECATEGORY_VHType/FixedValue">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_FILECATEGORY_VHType/ValueText">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_FILECATEGORY_VHType">
                 <Annotation Term="UI.HeaderInfo">
                     <Record>
@@ -25,32 +33,12 @@
                         <PropertyValue Property="TypeNamePlural" String="File categories"/>
                         <PropertyValue Property="Title">
                             <Record Type="UI.DataField">
-                                <PropertyValue Property="Value" String="">
-                                    <Annotation Term="Core.Messages">
-                                        <Collection>
-                                            <Record>
-                                                <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-001"/>
-                                                <PropertyValue Property="message" String="Property 'FixedValue' of annotation 'UI.HEADERINFO.TITLE' in proj./view 'ZMD_C_UPLOAD_FILECATEGORY_VH' not found"/>
-                                                <PropertyValue Property="severity" String="error"/>
-                                            </Record>
-                                        </Collection>
-                                    </Annotation>
-                                </PropertyValue>
+                                <PropertyValue Property="Value" Path="FixedValue"/>
                             </Record>
                         </PropertyValue>
                         <PropertyValue Property="Description">
                             <Record Type="UI.DataField">
-                                <PropertyValue Property="Value" String="">
-                                    <Annotation Term="Core.Messages">
-                                        <Collection>
-                                            <Record>
-                                                <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-001"/>
-                                                <PropertyValue Property="message" String="Property 'ValueText' of annotation 'UI.HEADERINFO.DESCRIPTION' in proj./view 'ZMD_C_UPLOAD_FILECATEGORY_VH' not found"/>
-                                                <PropertyValue Property="severity" String="error"/>
-                                            </Record>
-                                        </Collection>
-                                    </Annotation>
-                                </PropertyValue>
+                                <PropertyValue Property="Value" Path="ValueText"/>
                             </Record>
                         </PropertyValue>
                     </Record>
@@ -64,7 +52,10 @@
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_STATUS_VHType/ValueText"/>
+            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_STATUS_VHType/ValueText">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_STATUS_VHType">
                 <Annotation Term="UI.HeaderInfo">
                     <Record>
@@ -87,11 +78,11 @@
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType/FileCategory">
+            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType/FileName_Text">
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType/StatusCriticality">
+            <Annotations Target="ZMD_C_UPLOAD_TP_D_CDS.ZMD_C_UPLOAD_TP_DType/FileCategory">
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -137,13 +128,6 @@
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="FileName"/>
-                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="FileType"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="FileSize"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="CreatedAt"/>
@@ -152,7 +136,7 @@
                             <PropertyValue Property="Value" Path="CreatedBy"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Criticality" Path="StatusCriticality"/>
+                            <PropertyValue Property="Criticality" Path="to_Status/Criticality"/>
                             <PropertyValue Property="Value" Path="Status"/>
                         </Record>
                     </Collection>
@@ -162,7 +146,7 @@
                         <PropertyValue Property="SortOrder">
                             <Collection>
                                 <Record Type="Common.SortOrderType">
-                                    <PropertyValue Property="Property" PropertyPath="FileName"/>
+                                    <PropertyValue Property="Property" PropertyPath="CreatedAt"/>
                                     <PropertyValue Property="Descending" Bool="true"/>
                                 </Record>
                             </Collection>
@@ -172,7 +156,6 @@
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
                         <PropertyPath>FileName</PropertyPath>
-                        <PropertyPath>FileType</PropertyPath>
                         <PropertyPath>CreatedAt</PropertyPath>
                         <PropertyPath>CreatedBy</PropertyPath>
                         <PropertyPath>Status</PropertyPath>
