@@ -34,7 +34,7 @@
                     <core:Item
                         id="uploadFileDialog_filetype_item"
                         key="{ID}"
-                        text="{Text}"
+                        text="{ValueText}"
                     />
                 </Select>
 
@@ -48,7 +48,7 @@
                     id="uploadFileDialog_uploader"
                     fileType="csv"
                     multiple="false"
-                    uploadUrl="/api/admin/Upload/csv"
+                    uploadUrl="/sap/opu/odata/sap/ZMD_C_UPLOAD_TP_D_SRV/ZMD_C_UPLOAD_DATA_TP_D"
                     fileAllowed=".onFileAllowed"
                     uploadComplete=".onUploadComplete"
                     typeMissmatch=".onTypeMismatch"
@@ -64,7 +64,7 @@
                 text="{i18n>upload_dialog_button_import}"
                 press=".onImport"
                 type="Emphasized"
-                enabled="false"
+                enabled="true"
             />
         </beginButton>
         <endButton>
